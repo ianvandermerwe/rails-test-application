@@ -69,7 +69,7 @@ class TopicsController < ApplicationController
 
   def downvote
     @topic = Topic.find(params[:id])
-    
+
     if @topic.downvote
       redirect_to topics_url, notice: 'Vote was successfully destroyed.'
     else
