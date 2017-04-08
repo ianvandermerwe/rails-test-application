@@ -63,8 +63,19 @@ class TopicsController < ApplicationController
 
   def upvote
     @topic = Topic.find(params[:id])
-    @topic.votes.create
+    @topic.upvote
     redirect_to(topics_path)
+  end
+
+  def downvote
+    @topic = Topic.find(params[:id])
+    
+    if @topic.downvote
+      redirect_to topics_url, notice: 'Vote was successfully destroyed.'
+    else
+      redirect_to topics_url, notice: 'Vote was unsuccessfully destroyed.'
+    end
+    # redirect_to(topics_path)
   end
 
   private
